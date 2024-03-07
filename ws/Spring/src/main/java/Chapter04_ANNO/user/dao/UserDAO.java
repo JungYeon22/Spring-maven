@@ -1,8 +1,10 @@
-package Chapter04_XML.user.dao;
+package Chapter04_ANNO.user.dao;
 
-import Chapter04_XML.user.bean.UserDTO;
+import Chapter04_ANNO.user.bean.UserDTO;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 
 public interface UserDAO {
     public void write(UserDTO userDTO);

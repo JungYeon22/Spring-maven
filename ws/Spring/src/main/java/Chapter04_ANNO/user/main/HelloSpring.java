@@ -1,11 +1,13 @@
-package Chapter04_XML.user.main;
+package Chapter04_ANNO.user.main;
 
-import Chapter04_XML.user.service.UserService;
+import Chapter04_ANNO.user.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class HelloSpring {
     public  void  menu(ApplicationContext applicationContext){
         Scanner scanner = new Scanner(System.in);
@@ -39,7 +41,7 @@ public class HelloSpring {
     }
     public static void main(String[] args) {
         //HelloSpring helloSpring = new HelloSpring();
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Chapter04_XML/spring/applicationContext.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Chapter04_ANNO/spring/applicationContext.xml");
         HelloSpring helloSpring = applicationContext.getBean("helloSpring", HelloSpring.class);
         helloSpring.menu(applicationContext);
 

@@ -1,52 +1,27 @@
-package Chapter04_XML.user.dao;
+package Chapter04_ANNO.user.dao;
 
-import Chapter04_XML.user.bean.UserDTO;
+import Chapter04_ANNO.user.bean.UserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/*
-public class UserDAOImpl implements UserDAO{
-    @Setter
-    private JdbcTemplate jdbcTemplate;
-
-    @Override
-    public void write(UserDTO userDTO) {
-        String sql = "insert into usertable values(?, ?, ?)";
-        // insert, update, delete -> update()
-        jdbcTemplate.update(sql, userDTO.getName(), userDTO.getId(), userDTO.getPwd());
-    }
-
-    @Override
-    public List<UserDTO> getUserList() {
-        String sql = "select * from usertable";
-        List<UserDTO> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(UserDTO.class));// 한줄 한줄 Mapping처리를 해줌(UserDTO.class 타입으로)
-        return list;
-    }
-}
-*/
-
-/*
-public class UserDAOImpl extends JdbcDaoSupport implements UserDAO {
-    @Override
-    public void write(UserDTO userDTO) {
-        String sql = "insert into usertable values(?, ?, ?)";
-        // insert, update, delete -> update()
-        getJdbcTemplate().update(sql, userDTO.getName(), userDTO.getId(), userDTO.getPwd());
-    }
-
-    @Override
-    public List<UserDTO> getUserList() {
-        String sql = "select * from usertable";
-        List<UserDTO> list = getJdbcTemplate().query(sql, new BeanPropertyRowMapper<>(UserDTO.class));// 한줄 한줄 Mapping처리를 해줌(UserDTO.class 타입으로)
-        return list;
-    }
-}*/
+@Repository
 public class UserDAOImpl extends NamedParameterJdbcDaoSupport implements UserDAO {
+
+    // JdbcDaoSupport의 setDataSource가 final이기 때문에 Override 할 수 없다.
+    @Autowired
+    public void setDS(DataSource dataSource){
+        setDataSource(dataSource);  //JdbcDaoSupport의 setDataSource 호출
+    }
+
+
     @Override
     public void write(UserDTO userDTO) {
         Map<String, String> map = new HashMap<>();

@@ -1,13 +1,18 @@
-package Chapter04_XML.user.service;
+package Chapter04_ANNO.user.service;
 
-import Chapter04_XML.user.bean.UserDTO;
-import Chapter04_XML.user.dao.UserDAO;
+import Chapter04_ANNO.user.dao.UserDAO;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
-public class UserDeleteService implements UserService{
-    @Setter
+@Service
+public class UserDeleteService implements UserService {
+
+    @Autowired
     private UserDAO userDAO;
 
     @Override

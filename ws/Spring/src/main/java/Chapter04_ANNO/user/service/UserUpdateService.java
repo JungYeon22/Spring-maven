@@ -1,16 +1,27 @@
-package Chapter04_XML.user.service;
+package Chapter04_ANNO.user.service;
 
-import Chapter04_XML.user.bean.UserDTO;
-import Chapter04_XML.user.dao.UserDAO;
-import lombok.Setter;
+import Chapter04_ANNO.user.bean.UserDTO;
+import Chapter04_ANNO.user.dao.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
-public class UserUpdateService implements UserService{
-    @Setter
+@Service
+public class UserUpdateService implements UserService {
     private UserDAO userDAO;
-    @Setter
     private UserDTO userDTO;
+
+    @Autowired
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    @Autowired
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
+
     @Override
     public void execute() {
         System.out.println();
