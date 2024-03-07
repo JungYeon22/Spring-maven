@@ -1,12 +1,18 @@
-package Chapter03_XML.sample01;
+package Chapter03_ANNO.sample01;
 
 
-import lombok.Setter;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MessageBeanImpl implements MessageBean {
-	@Setter
+
 	private String str;
+
+	public void setStr(@Value("Have a nice day") String str) {
+		this.str = str;
+	}
 
 	@Override
 	public void showPrintBefore() {

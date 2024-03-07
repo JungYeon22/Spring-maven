@@ -1,4 +1,4 @@
-package Chapter03_XML.sample01;
+package Chapter03_ANNO.sample01;
 
 public interface MessageBean {
 	public void showPrintBefore();

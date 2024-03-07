@@ -9,4 +9,9 @@ public interface MessageBean {
 	public void showPrintAfter();
 
 	public void viewPrintAfter();
+
+	public String showPrint();
+	public void viewPrint();
+
+
 }

@@ -28,6 +28,16 @@ public class HelloSpring {
 		System.out.println();
 		messageBean.display();
 
+		System.out.println();
+		//around
+		System.out.println("====== around ======");
+		System.out.println();
+		messageBean.showPrint();
+		System.out.println();
+		messageBean.viewPrint();
+		System.out.println();
+		messageBean.display();
+
 	}
 
 }
