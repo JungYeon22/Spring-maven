@@ -1,15 +1,18 @@
-package Chapter05_XML.user.dao;
+package Chapter05_ANNO.user.dao;
 
-import Chapter05_XML.user.bean.UserDTO;
+import Chapter05_ANNO.user.bean.UserDTO;
 import lombok.Setter;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Transactional  // commit(); & close()
-public class UserDAOMybatis implements UserDAO{
-    @Setter
+@Repository
+public class UserDAOMybatis implements UserDAO {
+    @Autowired
     private SqlSession sqlSession;
 
     @Override

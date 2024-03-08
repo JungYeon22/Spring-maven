@@ -1,12 +1,12 @@
-package Chapter04_XML.user.service;
+package Chapter05_XML.user.service;
 
-import Chapter04_XML.user.bean.UserDTO;
-import Chapter04_XML.user.dao.UserDAO;
+import Chapter05_XML.user.bean.UserDTO;
+import Chapter05_XML.user.dao.UserDAO;
 import lombok.Setter;
 
 import java.util.Scanner;
 
-public class UserUpdateService implements UserService{
+public class UserUpdateService implements UserService {
     @Setter
     private UserDAO userDAO;
     @Setter

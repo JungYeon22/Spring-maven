@@ -1,13 +1,16 @@
-package Chapter05_XML.user.service;
+package Chapter05_ANNO.user.service;
 
-import Chapter05_XML.user.bean.UserDTO;
-import Chapter05_XML.user.dao.UserDAO;
+import Chapter05_ANNO.user.bean.UserDTO;
+import Chapter05_ANNO.user.dao.UserDAO;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserSelectService implements UserService {
-    @Setter
+    @Autowired
     private UserDAO userDAO;
 
     @Override

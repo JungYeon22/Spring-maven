@@ -1,4 +1,4 @@
-package Chapter04_XML.user.bean;
+package Chapter05_XML.user.bean;
 
 import lombok.Getter;
 import lombok.Setter;

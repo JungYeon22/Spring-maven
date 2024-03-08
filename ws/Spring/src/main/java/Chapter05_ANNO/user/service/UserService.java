@@ -1,4 +1,4 @@
-package Chapter05_XML.user.service;
+package Chapter05_ANNO.user.service;
 
 public interface UserService {
     public void execute();

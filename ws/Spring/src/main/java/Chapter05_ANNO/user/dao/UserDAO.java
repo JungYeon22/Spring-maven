@@ -1,6 +1,6 @@
-package Chapter05_XML.user.dao;
+package Chapter05_ANNO.user.dao;
 
-import Chapter05_XML.user.bean.UserDTO;
+import Chapter05_ANNO.user.bean.UserDTO;
 
 import java.util.List;
 
