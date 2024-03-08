@@ -9,26 +9,9 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 
-	<bean id="messageBeanImpl" class="Chapter03_XML.sample01.MessageBeanImpl">
-		<property name="str" value="Have a nice day!!"/>
-	</bean>
-
-	<bean id="loggingAdvice" class="Chapter03_XML.sample01.LoggingAdvice"/>
-
-	 <!-- AOP -->
-	<aop:config>
-		<aop:pointcut id="beforeMethod" expression="execution(public * *.*.*.*Before(..))"/>
-		<aop:pointcut id="afterMethod"  expression="execution(public * *.*.*.*After(..))"/>
-		<aop:pointcut id="aroundMethod" expression="execution(public * *.*.*.*Print(..))"/>
-		<aop:aspect ref="loggingAdvice">
-			<aop:before method="beforeTrace" pointcut-ref="beforeMethod"/>
-			<aop:after  method="afterTrace"  pointcut-ref="afterMethod"/>
-			<aop:around method="trace"       pointcut-ref="aroundMethod"/>
-		</aop:aspect>
-	</aop:config>
-
-
-
+<!--	<aop:aspectj-autoproxy/>-->
+	<context:component-scan base-package="Chapter03_ANNO.sample01"/>
+	<context:component-scan base-package="Chapter03_ANNO.spring.conf"/>
 </beans>
 
 

@@ -2,53 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:tx="http://www.springframework.org/schema/c"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- Connection Pool & DataSource -->
-	<context:property-placeholder location="classpath:Chapter05_XML/spring/db.properties"/>
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="${jdbc.driver}"/>
-		<property name="url" value="${jdbc.url}"/>
-		<property name="username" value="${jdbc.username}"/>
-		<property name="password" value="${jdbc.password}"/>
-	</bean>
 
-	<!-- SqlSessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:Chapter05_XML/spring/mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath:Chapter05_XML/mapper/userMapper.xml"/>
-	</bean>
+	<context:component-scan base-package="Chapter05_ANNO.spring"/>
+	<context:component-scan base-package="Chapter05_ANNO.user.*"/>
 
-	<!-- SqlSession -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory"/>
-	</bean>
+	<!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 
-	<!-- Transaction --><!-- commit , close 처리-->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<constructor-arg ref="dataSource"/>
-	</bean>
-
-	<bean id="helloSpring" class="Chapter05_XML.user.main.HelloSpring"/>
-	<bean id="userInsertService" class="Chapter05_XML.user.service.UserInsertService" >
-		<property name="userDTO" ref="userDTO"/>
-		<property name="userDAO" ref="userDAOMybatis"/>
-	</bean>
-	<bean id="userSelectService" class="Chapter05_XML.user.service.UserSelectService">
-		<property name="userDAO" ref="userDAOMybatis"/>
-	</bean>
-	<bean id="userUpdateService" class="Chapter05_XML.user.service.UserUpdateService">
-		<property name="userDAO" ref="userDAOMybatis"/>
-		<property name="userDTO" ref="userDTO"/>
-	</bean>
-	<bean id="userDeleteService" class="Chapter05_XML.user.service.UserDeleteService">
-		<property name="userDAO" ref="userDAOMybatis"/>
-	</bean>
-	<bean id="userDTO" class="Chapter05_XML.user.bean.UserDTO"/>
-	<bean id="userDAOMybatis" class="Chapter05_XML.user.dao.UserDAOMybatis">
-		<property name="sqlSession"	ref="sqlSession"/>
-	</bean>
 
 </beans>

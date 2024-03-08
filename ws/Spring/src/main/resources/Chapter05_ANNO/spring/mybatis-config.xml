@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="Chapter05_XML.user.bean.UserDTO" alias="user"/>
+        <typeAlias type="Chapter05_ANNO.user.bean.UserDTO" alias="user"/>
     </typeAliases>
 
 </configuration>
